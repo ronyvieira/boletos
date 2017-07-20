@@ -172,5 +172,6 @@ module Brcobranca
   # Módulos para classes de utilidades
   module Util
     autoload :Empresa, 'brcobranca/util/empresa'
+    autoload :Sicoob, 'brcobranca/util/sicoob'
   end
 end
