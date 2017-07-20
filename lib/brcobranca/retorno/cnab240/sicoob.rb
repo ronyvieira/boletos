@@ -53,7 +53,7 @@ module Brcobranca
             parse.field :cod_movimento_ret, 15..16
             parse.field :agencia_com_dv, 17..22
             parse.field :cedente_com_dv, 23..35
-            parse.field :nosso_numero, 37..46
+            parse.field :nosso_numero, 37..45 #sem o digito verificador
             parse.field :carteira, 57..57
             parse.field :numero_documento, 58..72
             parse.field :data_vencimento, 73..80

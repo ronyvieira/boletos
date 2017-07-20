@@ -8,7 +8,7 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
     Brcobranca::Remessa::Pagamento.new(
       valor: 50.0,
       data_vencimento: Date.current,
-      nosso_numero: '00000012',
+      nosso_numero: '12',
       documento_sacado: '82136760505',
       nome_sacado: 'PABLO DIEGO JOSÉ FRANCISCO DE PAULA JUAN NEPOMUCENO MARÍA DE LOS REMEDIOS CIPRIANO DE LA SANTÍSSIMA TRINIDAD RUIZ Y PICASSO',
       endereco_sacado: 'RUA RIO GRANDE DO SUL São paulo Minas caçapa da silva junior',
@@ -24,6 +24,7 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
       empresa_mae: 'SOCIEDADE BRASILEIRA DE ZOOLOGIA LTDA',
       agencia: '4327',
       conta_corrente: '03666',
+      convenio: '229385',
       documento_cedente: '74576177000177',
       modalidade_carteira: '01',
       pagamentos: [pagamento]
@@ -132,7 +133,7 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
 
     it 'formata o nosso numero' do
       nosso_numero = sicoob.formata_nosso_numero pagamento
-      expect(nosso_numero).to eq '000000001201014     '
+      expect(nosso_numero).to eq '000000012801014     '
     end
   end
 

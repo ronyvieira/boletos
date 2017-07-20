@@ -12,7 +12,7 @@ RSpec.describe Brcobranca::Retorno::Cnab240::Sicoob do
     pagamento = pagamentos.first
     expect(pagamento.agencia_com_dv).to eql('030390')
     expect(pagamento.cedente_com_dv).to eql('0000000489816')
-    expect(pagamento.nosso_numero).to eql('0000000083')
+    expect(pagamento.nosso_numero).to eql('000000083')
     expect(pagamento.numero_documento).to eql('000000000123456')
     expect(pagamento.carteira).to eql('1')
     expect(pagamento.data_vencimento).to eql('13082015')
