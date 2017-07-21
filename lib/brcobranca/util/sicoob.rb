@@ -35,7 +35,7 @@ module Brcobranca
       #     Ex.: 11 – 3 = 8, então Nosso Número + DV = 21-8
       #
       def self.calcule_dv_nosso_numero agencia, convenio, nosso_numero
-        "#{agencia.try(:rjust, 4, '0')}#{convenio.try(:rjust, 10, '0')}#{nosso_numero.try(:rjust, 7, '0')}".modulo11(
+        "#{agencia.to_s.rjust(4, '0')}#{convenio.to_s.rjust(10, '0')}#{nosso_numero.to_s.rjust(7, '0')}".modulo11(
           reverse: false,
           multiplicador: [3, 1, 9, 7],
           mapeamento: { 10 => 0, 11 => 0 }
