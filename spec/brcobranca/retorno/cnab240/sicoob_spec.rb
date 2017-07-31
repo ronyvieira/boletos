@@ -10,6 +10,7 @@ RSpec.describe Brcobranca::Retorno::Cnab240::Sicoob do
     pagamentos = described_class.load_lines(@arquivo)
     expect(pagamentos.size).to eq(3)
     pagamento = pagamentos.first
+    expect(pagamento.cod_banco).to eql('756')
     expect(pagamento.agencia_com_dv).to eql('030390')
     expect(pagamento.cedente_com_dv).to eql('0000000489816')
     expect(pagamento.nosso_numero).to eql('000000083')

@@ -12,6 +12,7 @@ RSpec.describe Brcobranca::Retorno::RetornoCnab240 do
     pagamentos = described_class.load_lines(@arquivo)
     expect(pagamentos.size).to eq(35)
     pagamento = pagamentos.first
+    expect(pagamento.cod_banco).to eql('001')
     expect(pagamento.agencia_com_dv).to eql('012345')
     expect(pagamento.cedente_com_dv).to eql('0000000054321')
     expect(pagamento.nosso_numero).to eql('00020673')
