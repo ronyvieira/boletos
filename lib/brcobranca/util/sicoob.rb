@@ -34,8 +34,8 @@ module Brcobranca
       # e) O resto da divisão deverá ser subtraído de 11 achando assim o DV (Se o Resto for igual a 0 ou 1 então o DV é igual a 0).
       #     Ex.: 11 – 3 = 8, então Nosso Número + DV = 21-8
       #
-      def self.calcule_dv_nosso_numero agencia, convenio, nosso_numero
-        "#{agencia.to_s.rjust(4, '0')}#{convenio.to_s.rjust(10, '0')}#{nosso_numero.to_s.rjust(7, '0')}".modulo11(
+      def self.calcule_dv_nosso_numero agencia, cod_beneficiario, nosso_numero
+        "#{agencia.to_s.rjust(4, '0')}#{cod_beneficiario.to_s.rjust(10, '0')}#{nosso_numero.to_s.rjust(7, '0')}".modulo11(
           reverse: false,
           multiplicador: [3, 1, 9, 7],
           mapeamento: { 10 => 0, 11 => 0 }
