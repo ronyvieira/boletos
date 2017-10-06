@@ -149,7 +149,9 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Caixa do
   end
 
   context 'geracao remessa' do
-    it_behaves_like 'cnab240'
+    it_behaves_like 'cnab240' do
+      let(:custom_params) { {versao_aplicativo: '1234', digito_agencia: '1'} }
+    end
 
     context 'trailer lote' do
       it 'trailer lote deve ter o complemento_trailer na posicao correta' do
