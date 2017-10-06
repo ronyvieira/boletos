@@ -24,7 +24,8 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
       empresa_mae: 'SOCIEDADE BRASILEIRA DE ZOOLOGIA LTDA',
       agencia: '4327',
       conta_corrente: '03666',
-      convenio: '229385',
+      convenio: '183',
+      cod_beneficiario: '229385',
       documento_cedente: '74576177000177',
       modalidade_carteira: '01',
       pagamentos: [pagamento]
@@ -112,7 +113,7 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
 
     it 'cod. convenio deve retornar as informacoes nas posicoes corretas' do
       cod_convenio = sicoob.codigo_convenio
-      expect(cod_convenio[0..19]).to eq '00000000000000229385'
+      expect(cod_convenio[0..19]).to eq '00000000000000000183'
     end
 
     it 'info conta deve retornar as informacoes nas posicoes corretas' do
@@ -138,7 +139,9 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
   end
 
   context 'geracao remessa' do
-    it_behaves_like 'cnab240'
+    it_behaves_like 'cnab240' do
+      let(:custom_params) { {cod_beneficiario: '183'} }
+    end
 
     context 'trailer lote' do
       it 'trailer lote deve ter as informacoes nas posicoes corretas' do

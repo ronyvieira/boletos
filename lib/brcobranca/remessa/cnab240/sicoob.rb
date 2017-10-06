@@ -22,7 +22,9 @@ module Brcobranca
         #            "4" -A4 sem envelopamento
         #            "6" -A4 sem envelopamento 3 vias
 
-        validates_presence_of :modalidade_carteira, :tipo_formulario, message: 'não pode estar em branco.'
+        attr_accessor :cod_beneficiario
+
+        validates_presence_of :modalidade_carteira, :tipo_formulario, :convenio, :cod_beneficiario, message: 'não pode estar em branco.'
         # Remessa 400 - 8 digitos
         # Remessa 240 - 12 digitos
         validates_length_of :conta_corrente, maximum: 8, message: 'deve ter 8 dígitos.'
@@ -232,7 +234,7 @@ module Brcobranca
         #            "6" -A4 sem envelopamento 3 vias
         #       Em branco - 05 posições (16 a 20)
         def formata_nosso_numero(pagamento)
-          dv_nosso_numero = Brcobranca::Util::Sicoob.calcule_dv_nosso_numero agencia, convenio, pagamento.nosso_numero
+          dv_nosso_numero = Brcobranca::Util::Sicoob.calcule_dv_nosso_numero agencia, cod_beneficiario, pagamento.nosso_numero
           "#{pagamento.nosso_numero.to_s.rjust(9, '0')}#{dv_nosso_numero}#{pagamento.parcela.to_s.rjust(2, '0')}#{modalidade_carteira}#{tipo_formulario}#{''.to_s.rjust(5, ' ')}"
         end
       end

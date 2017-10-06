@@ -20,7 +20,7 @@ shared_examples_for 'cnab240' do
                                        numero_documento: '00000000123')
   end
   let(:params) do
-    params = {
+    {
       empresa_mae: 'SOCIEDADE BRASILEIRA DE ZOOLOGIA LTDA',
       agencia: '1234',
       conta_corrente: '12345',
@@ -31,16 +31,8 @@ shared_examples_for 'cnab240' do
       mensagem_2: 'Campo destinado ao preenchimento no momento do pagamento.',
       pagamentos: [pagamento]
     }
-    if subject.class == Brcobranca::Remessa::Cnab240::Caixa
-      params[:versao_aplicativo] = '1234'
-      params[:digito_agencia] = '1'
-    elsif subject.class == Brcobranca::Remessa::Cnab240::BancoBrasil
-      params[:carteira] = '12'
-      params[:variacao] = '123'
-    end
-    params
   end
-  let(:objeto) { subject.class.new(params) }
+  let(:objeto) { subject.class.new(params.merge(custom_params || {}))  }
 
   context 'header arquivo' do
     it 'header arquivo deve ter 240 posicoes' do
