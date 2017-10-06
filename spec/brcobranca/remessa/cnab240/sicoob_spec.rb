@@ -78,12 +78,12 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
       expect(nome_banco[0..19]).to eq 'SICOOB              '
     end
 
-    it 'versao do layout do arquivo deve ser 081' do
-      expect(sicoob.versao_layout_arquivo).to eq '081'
+    it 'versao do layout do arquivo deve ser 087' do
+      expect(sicoob.versao_layout_arquivo).to eq '087'
     end
 
-    it 'versao do layout do lote deve ser 040' do
-      expect(sicoob.versao_layout_lote).to eq '040'
+    it 'versao do layout do lote deve ser 045' do
+      expect(sicoob.versao_layout_lote).to eq '045'
     end
 
     it 'deve calcular o digito da agencia' do
@@ -112,7 +112,7 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
 
     it 'cod. convenio deve retornar as informacoes nas posicoes corretas' do
       cod_convenio = sicoob.codigo_convenio
-      expect(cod_convenio[0..19]).to eq '                    '
+      expect(cod_convenio[0..19]).to eq '00000000000000229385'
     end
 
     it 'info conta deve retornar as informacoes nas posicoes corretas' do

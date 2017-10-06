@@ -339,7 +339,7 @@ module Brcobranca
           contador = 1
           arquivo.push monta_lote(contador)
 
-          arquivo << monta_trailer_arquivo(contador, ((pagamentos.size * 2) + (contador * 2) + 2))
+          arquivo << monta_trailer_arquivo(contador, ((pagamentos.size * 3) + (contador * 2) + 2))
 
           remittance = arquivo.join("\n").to_ascii.upcase
           remittance << "\n"
