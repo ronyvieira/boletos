@@ -47,11 +47,11 @@ module Brcobranca
         end
 
         def versao_layout_arquivo
-          '081'
+          '087'
         end
 
         def versao_layout_lote
-          '040'
+          '045'
         end
 
         def digito_agencia
@@ -69,7 +69,7 @@ module Brcobranca
         def codigo_convenio
           # CAMPO                TAMANHO
           # num. convenio        20 BRANCOS
-          ''.rjust(20, ' ')
+          convenio.rjust(20, '0')
         end
 
         alias convenio_lote codigo_convenio
