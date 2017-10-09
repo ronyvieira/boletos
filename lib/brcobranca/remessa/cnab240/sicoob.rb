@@ -24,7 +24,7 @@ module Brcobranca
 
         attr_accessor :cod_beneficiario
 
-        validates_presence_of :modalidade_carteira, :tipo_formulario, :convenio, :cod_beneficiario, message: 'não pode estar em branco.'
+        validates_presence_of :modalidade_carteira, :tipo_formulario, :cod_beneficiario, message: 'não pode estar em branco.'
         # Remessa 400 - 8 digitos
         # Remessa 240 - 12 digitos
         validates_length_of :conta_corrente, maximum: 8, message: 'deve ter 8 dígitos.'
@@ -70,8 +70,9 @@ module Brcobranca
 
         def codigo_convenio
           # CAMPO                TAMANHO
-          # num. convenio        20 BRANCOS
-          convenio.rjust(20, '0')
+          # num. convenio
+
+          (convenio || '').rjust(20, ' ')
         end
 
         alias convenio_lote codigo_convenio

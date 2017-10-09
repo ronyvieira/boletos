@@ -113,7 +113,7 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
 
     it 'cod. convenio deve retornar as informacoes nas posicoes corretas' do
       cod_convenio = sicoob.codigo_convenio
-      expect(cod_convenio[0..19]).to eq '00000000000000000183'
+      expect(cod_convenio[0..19]).to eq '                 183'
     end
 
     it 'info conta deve retornar as informacoes nas posicoes corretas' do
