@@ -59,13 +59,13 @@ module Brcobranca
         def digito_agencia
           # utilizando a agencia com 4 digitos
           # para calcular o digito
-          agencia.modulo11(mapeamento: { 10 => 'X' }).to_s
+          agencia.modulo11(mapeamento: { 10 => '0' }).to_s
         end
 
         def digito_conta
           # utilizando a conta corrente com 5 digitos
           # para calcular o digito
-          conta_corrente.modulo11(mapeamento: { 10 => 'X' }).to_s
+          conta_corrente.modulo11(mapeamento: { 10 => '0' }).to_s
         end
 
         def codigo_convenio
