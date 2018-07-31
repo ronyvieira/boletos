@@ -96,7 +96,32 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
       # x         9  8  7  6
       # =         36 24 14 6 = 80
       # 80 / 11 = 7 com resto 3
-      expect(sicoob.digito_agencia).to eq '3'
+      expected_digito_agencia_list = [
+        { agencia: '3214', dv: '0'},
+        { agencia: '2006', dv: '0'},
+        { agencia: '5651', dv: '0'},
+        { agencia: '5691', dv: '0'},
+        { agencia: '5741', dv: '0'},
+        { agencia: '1008', dv: '1'},
+        { agencia: '5681', dv: '2'},
+        { agencia: '5731', dv: '2'},
+        { agencia: '4327', dv: '3'},
+        { agencia: '1001', dv: '4'},
+        { agencia: '5761', dv: '4'},
+        { agencia: '3032', dv: '5'},
+        { agencia: '5671', dv: '5'},
+        { agencia: '5631', dv: '6'},
+        { agencia: '1005', dv: '7'},
+        { agencia: '5661', dv: '8'},
+        { agencia: '0001', dv: '9'},
+        { agencia: '5621', dv: '9'},
+      ]
+
+      expected_digito_agencia_list.each do |expected_digito_agencia|
+        remessa_params = params.merge!(agencia: expected_digito_agencia[:agencia])
+        remessa = subject.class.new(remessa_params)
+        expect(remessa.digito_agencia).to eq expected_digito_agencia[:dv]
+      end
     end
 
     it 'deve calcular  digito da conta' do
@@ -108,7 +133,36 @@ RSpec.describe Brcobranca::Remessa::Cnab240::Sicoob do
       # x       9  8  7  6  5
       # =       45 32 21 12 5 = 116
       # 116 / 11 = 10 com resto 5
-      expect(sicoob.digito_conta).to eq '8'
+
+      expected_digito_conta_list = [
+        { conta_corrente: '29649', dv: '0'},
+        { conta_corrente: '03214', dv: '0'},
+        { conta_corrente: '02006', dv: '0'},
+        { conta_corrente: '05651', dv: '0'},
+        { conta_corrente: '05691', dv: '0'},
+        { conta_corrente: '05741', dv: '0'},
+        { conta_corrente: '01008', dv: '1'},
+        { conta_corrente: '05681', dv: '2'},
+        { conta_corrente: '05731', dv: '2'},
+        { conta_corrente: '04327', dv: '3'},
+        { conta_corrente: '01001', dv: '4'},
+        { conta_corrente: '05761', dv: '4'},
+        { conta_corrente: '12345', dv: '5'},
+        { conta_corrente: '03032', dv: '5'},
+        { conta_corrente: '05671', dv: '5'},
+        { conta_corrente: '05631', dv: '6'},
+        { conta_corrente: '01005', dv: '7'},
+        { conta_corrente: '03666', dv: '8'},
+        { conta_corrente: '05661', dv: '8'},
+        { conta_corrente: '00001', dv: '9'},
+        { conta_corrente: '05621', dv: '9'}
+      ]
+
+      expected_digito_conta_list.each do |expected_digito_conta|
+        remessa_params = params.merge!(conta_corrente: expected_digito_conta[:conta_corrente])
+        remessa = subject.class.new(remessa_params)
+        expect(remessa.digito_conta).to eq expected_digito_conta[:dv]
+      end
     end
 
     it 'cod. convenio deve retornar as informacoes nas posicoes corretas' do
